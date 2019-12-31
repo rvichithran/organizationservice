@@ -1,0 +1,26 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+
+ribbon:
+  ConnectTimeout: 500
+  ReadTimeout: 2000
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/user
+    client:
+       grant-type: client_credentials
+
+
