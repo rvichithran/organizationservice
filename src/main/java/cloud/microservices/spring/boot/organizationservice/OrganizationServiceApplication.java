@@ -38,7 +38,7 @@ public class OrganizationServiceApplication {
         SpringApplication.run(OrganizationServiceApplication.class, args);
     }
 
-    /*@Bean
+    @Bean
     @LoadBalanced
     public RestTemplate getRestTemplate(){
         RestTemplate restTemplate = new RestTemplate();
@@ -50,9 +50,9 @@ public class OrganizationServiceApplication {
             restTemplate.setInterceptors(interceptors);
         }
         return restTemplate;
-    }*/
+    }
 
-    @Bean
+    /*@Bean
     @LoadBalanced
     public OAuth2RestTemplate oAuth2RestTemplate(OAuth2ClientContext oAuth2ClientContext,
                                                  OAuth2ProtectedResourceDetails details) {
@@ -65,7 +65,7 @@ public class OrganizationServiceApplication {
             restTemplate.setInterceptors(interceptors);
         }
         return restTemplate;
-    }
+    }*/
 
    /* @Bean
     public Customizer<HystrixCircuitBreakerFactory> defaultConfig() {

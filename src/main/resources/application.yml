@@ -16,11 +16,30 @@ ribbon:
   ConnectTimeout: 500
   ReadTimeout: 2000
 
-security:
-  oauth2:
-    resource:
-      userInfoUri: http://localhost:8901/user
-    client:
-       grant-type: client_credentials
+#security:
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:8901/user
+#    client:
+#       grant-type: client_credentials
 
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    org.springframework.security: DEBUG
+    com.thoughtmechanix: DEBUG
 
+spring:
+  cloud:
+    stream:
+      bindings:
+        inboundLicenseChanges:
+          destination: licenseChangeTopic
+          content-type: application/json
+          group: organizationGroup
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost

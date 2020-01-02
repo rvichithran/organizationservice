@@ -1,5 +1,6 @@
 package cloud.microservices.spring.boot.organizationservice.utils;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -12,8 +13,9 @@ public class UserContextFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        UserContextHolder.get().setCorrelationId(  httpServletRequest.getHeader(UserContext.CORRELATION_ID) );
-        System.out.println(" Got correlation id :: "+httpServletRequest.getHeader(UserContext.CORRELATION_ID));
+        UserContextHolder.get().setCorrelationId(httpServletRequest.getHeader(UserContext.CORRELATION_ID));
+        UserContextHolder.get().setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
+        System.out.println(httpServletRequest.getHeader("Authorization"));
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
 

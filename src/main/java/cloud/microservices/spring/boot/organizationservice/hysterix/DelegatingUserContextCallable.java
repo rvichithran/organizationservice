@@ -18,6 +18,7 @@ public class DelegatingUserContextCallable<V> implements Callable<V> {
     @Override
     public V call() throws Exception {
         UserContextHolder.get().setCorrelationId(userContext.getCorrelationId());
+        UserContextHolder.get().setAuthToken(userContext.getAuthToken());
         return callable.call();
     }
 }
